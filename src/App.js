@@ -10,23 +10,30 @@ class App extends Component {
 
   state = {
     books: []
-    
   }
 
-  /* This lifecycle event allows us to hook the API call to 
-   * add book data to the DOM. 
-  */ 
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {
+  /* Fetch all books from the BooksAPI. */
+  getAllBooks = () => {
+    BooksAPI.getAll().then(books => {
       this.setState({ books })
     })
   }
+  /* This lifecycle event allows us to hook the API call to 
+   * add book data to the DOM. 
+  */ 
+
+  componentDidMount() {
+    this.getAllBooks()
+  }
   
   /**
-  * TO DO: Change the shelf of the book and update the state.
+  * Change the shelf of the book.
   */
-
-
+  onShelfChange = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(() => {
+      this.getAllBooks()
+    })
+  }
 
   render() {
     return (
@@ -34,13 +41,17 @@ class App extends Component {
         <Route exact path="/" render={() => (
           <BookLibrary 
           books={this.state.books}
+          onShelfChange={this.onShelfChange}
           />
 
         )}/>
-        <Route path="/search" Component={BookSearch}/>  
+        <Route path="/search" render={({history}) => (
+          <BookSearch
+          books={this.state.books}
+          />
+        )}/>  
       </div>
     )
   }
 }
-
 export default App

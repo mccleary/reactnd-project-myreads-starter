@@ -7,26 +7,41 @@ import BookShelf from './BookShelf'
 class BookLibrary extends Component {
   
   static propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    onShelfChange: PropTypes.func.isRequired
   }
 
   render () {
 
-    const { books } = this.props
+    //const { books, onShelfChange } = this.props
 
     return (
-      <div className="list-books">
-        <div className="list-books-title">
+      <div>
+        <div className="list-books">
+          <div className="list-books-title">
           <h1>MyReads</h1>
-        </div>
+          </div>
           <div className="list-books-content">
-            <BookShelf books={books.filter(book => book.shelf === "currentlyReading")} shelf={'Currently Reading'}/>
-            <BookShelf books={books.filter(book => book.shelf === "wantToRead")} shelf={'Want to Read'}/>
-            <BookShelf books={books.filter(book => book.shelf === "read")} shelf={'Read'}/>
+            <BookShelf 
+              title='Currently Reading'
+              books={this.props.books.filter(book => book.shelf === "currentlyReading")} 
+              onShelfChange={this.props.onShelfChange}
+            />
+            <BookShelf 
+              title='Want to Read'
+              books={this.props.books.filter(book => book.shelf === "wantToRead")}
+              onShelfChange={this.props.onShelfChange}
+            />
+            <BookShelf 
+              title='Read'
+              books={this.props.books.filter(book => book.shelf === "read")} 
+              onShelfChange={this.props.onShelfChange}
+            />
           </div>
-          <div className="open-search">
-            <Link to="/search">Find and add book</Link>
-          </div>
+        </div>
+        <div className="open-search">
+          <Link to="/search">Find and add book</Link>
+        </div>
       </div>
     )
   }  
