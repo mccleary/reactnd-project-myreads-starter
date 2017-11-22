@@ -1,22 +1,37 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 
-class BookShelfChanger extends Component {
+function BookShelfChanger (props) {
+  const book = props.book;
 
-  render() {
+  /**
+   * Handler for the 'change' event of the 'select' allows to
+   * move the book to another shelf.
+   */
 
-    return (
-      <div className="book-shelf-changer">
-        <select>
-          <option value="" disabled>Move to...</option>
-          <option value="currentlyReading">Currently Reading</option>
-          <option value="wantToRead">Want to Read</option>
-          <option value="read">Read</option>
-          <option value="none">None</option>
-        </select>
-      </div>
-    )
-  }
-}
+  let handleChange = (event) => {
+    const shelf = event.target.value;
+    props.onShelfChange(book, shelf);
+  };
+
+  return (
+    <div className="book-shelf-changer">
+      <select value={book.shelf || 'none'} onChange={handleChange}>
+        <option value="" disabled>Move to...</option>
+        <option value="currentlyReading">Currently Reading</option>
+        <option value="wantToRead">Want to Read</option>
+        <option value="read">Read</option>
+        <option value="none">None</option>
+      </select>
+    </div>
+  );
+};
+
+BookShelfChanger.propTypes = {
+  book: PropTypes.object.isRequired,
+  onShelfChange: PropTypes.func.isRequired
+};
+
 
 export default BookShelfChanger
