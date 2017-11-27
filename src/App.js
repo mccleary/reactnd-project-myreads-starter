@@ -12,14 +12,19 @@ class App extends Component {
     books: []
   }
 
-  /* Fetch all books from the BooksAPI. */
+  /**
+  *  @description Fetch all books from the BooksAPI. 
+  */
+  
   getAllBooks = () => {
     BooksAPI.getAll().then(books => {
       this.setState({ books })
     })
   }
-  /* This lifecycle event allows us to hook the API call to 
-   * add book data to the DOM. 
+  
+  /**
+  * @description This lifecycle event allows to hook the API call to 
+  * add book data to the DOM. 
   */ 
 
   componentDidMount() {
@@ -27,7 +32,7 @@ class App extends Component {
   }
   
   /**
-  * Change the shelf of the book.
+  * @description Changes the shelf of the book.
   */
   onShelfChange = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
@@ -45,11 +50,12 @@ class App extends Component {
           />
 
         )}/>
-        <Route path="/search" render={({history}) => (
+        <Route path="/search" render={() => (
           <BookSearch
-         
+            books={this.state.books}
+            onShelfChange={this.onShelfChange}  
           />
-        )}/>  
+        )}/>
       </div>
     )
   }
