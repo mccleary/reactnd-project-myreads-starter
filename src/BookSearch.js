@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
-
 import sortBy from 'sort-by'
 import Book from './Book'
-
 import * as BooksAPI from './BooksAPI'
 
-/*
- Search component which includes the state.
+/**
+* @description Search component which includes the state.
 */
+
 class BookSearch extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
@@ -20,17 +19,20 @@ class BookSearch extends Component {
     query:'', books:[]
   }
 
-  updateQuery = (query) => {if (!query) {
-    this.setState({query: '', books:[]})
-  } else {
-    this.setState({ query: query.trim() })
+  updateQuery = (query) => {
+    if (!query) {
+      this.setState({query: '', books:[]})
+    } else {
+        this.setState({ query: query.trim() });
+
     BooksAPI.search(query).then((books) => {
       if (books.error) {
-        books = []
+        this.setState( { books: [] })
       }
+
       books.map(book => (this.props.books.filter((b) => b.id === book.id).map(b => book.shelf = b.shelf)))
-      this.setState({books})
-      })
+      this.setState({books})  
+    })
     }
   }
 
@@ -51,7 +53,7 @@ class BookSearch extends Component {
           {this.state.books.sort(sortBy('title'))
                   .map(book => (
             <li key={book.id}>
-            <Book book={book} key={book.id} onShelfChange={this.props.onShelfChange} shelf={this.props.shelf}/>
+            <Book book={book} onShelfChange={this.props.onShelfChange}/>
             </li>
             ))}
           </ol>

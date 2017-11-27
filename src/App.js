@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom'
 import BookLibrary from './BookLibrary'
 import BookSearch from './BookSearch'
 import './App.css'
-
 import * as BooksAPI from './BooksAPI'
 
 class App extends Component {
@@ -15,13 +14,13 @@ class App extends Component {
   /**
   *  @description Fetch all books from the BooksAPI. 
   */
-  
+
   getAllBooks = () => {
     BooksAPI.getAll().then(books => {
       this.setState({ books })
     })
   }
-  
+
   /**
   * @description This lifecycle event allows to hook the API call to 
   * add book data to the DOM. 
@@ -30,7 +29,7 @@ class App extends Component {
   componentDidMount() {
     this.getAllBooks()
   }
-  
+
   /**
   * @description Changes the shelf of the book.
   */

@@ -1,6 +1,5 @@
 import React from 'react'
 import Book from './Book'
-import PropTypes from 'prop-types'
 
 /** 
 * @description Represents a bookshelf, which is a 
@@ -24,12 +23,6 @@ function BookShelf (props) {
           </div>
         </div>
     )
-}
-
-BookShelf.propTypes = {
-  title: PropTypes.string.isRequired,
-  books: PropTypes.array.isRequired,
-  onShelfChange: PropTypes.func.isRequired
 }
 
 export default BookShelf

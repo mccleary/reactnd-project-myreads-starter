@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import {PropTypes} from 'prop-types'
 import BookShelf from './BookShelf'
 
-
 class BookLibrary extends Component {
   
   static propTypes = {
