@@ -31,7 +31,5 @@ The provided API uses a fixed set of cached search results and is limited to a p
 * [Comprehensive React.js Guide by Tyler McGinnis](https://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/)
 * [Official React Tutorial](https://reactjs.org/tutorial/tutorial.html)
 * [Raw React by James K Nelson](http://jamesknelson.com/learn-raw-react-no-jsx-flux-es6-webpack/)
-* [catwiththreehats](https://github.com/catwiththreehats/reactnd-project-myreads-starter-master.git)
-* [LonelyPrincess](https://github.com/LonelyPrincess/reactnd-project-myreads.git)
-* [schizo99](https://github.com/schizo99/reactnd-project-myreads-starter.git
+* [catwiththreehats](https://github.com/catwiththreehats/reactnd-project-myreads-starter-master.git), [LonelyPrincess](https://github.com/LonelyPrincess/reactnd-project-myreads.git), [schizo99](https://github.com/schizo99/reactnd-project-myreads-starter.git
 )
