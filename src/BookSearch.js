@@ -21,18 +21,18 @@ class BookSearch extends Component {
 
   updateQuery = (query) => {
     if (!query) {
-      this.setState({query: '', books:[]})
+      this.setState({query: '', books: []})
     } else {
-        this.setState({ query: query.trim() })
+        this.setState({query: query.trim()})
+        
+        BooksAPI.search(query).then((books) => {
+          if (books.error) {
+            this.setState({books: []})
+          }
 
-    BooksAPI.search(query).then((books) => {
-      if (books.error) {
-        this.setState( { books: [] })
-      }
-
-      books.map(book => (this.props.books.filter((b) => b.id === book.id).map(b => book.shelf = b.shelf)))
-      this.setState({books})  
-    })
+          books.map(book => (this.props.books.filter((b) => b.id === book.id).map(b => book.shelf = b.shelf)))
+          this.setState({ books })  
+        })
     }
   }
 
@@ -53,7 +53,7 @@ class BookSearch extends Component {
           {this.state.books.sort(sortBy('title'))
                   .map(book => (
             <li key={book.id}>
-            <Book book={book} onShelfChange={this.props.onShelfChange}/>
+            <Book book={book} onShelfChange={ this.props.onShelfChange}/>
             </li>
             ))}
           </ol>
