@@ -35,6 +35,6 @@ The provided API uses a fixed set of cached search results and is limited to a p
 
 #### Projects from fellow students
 * [catwiththreehats](https://github.com/catwiththreehats/reactnd-project-myreads-starter-master.git)
-* LonelyPrincess](https://github.com/LonelyPrincess/reactnd-project-myreads.git)
+* [LonelyPrincess](https://github.com/LonelyPrincess/reactnd-project-myreads.git)
 * [schizo99](https://github.com/schizo99/reactnd-project-myreads-starter.git
 )
